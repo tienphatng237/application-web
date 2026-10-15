@@ -33,13 +33,13 @@ function TaskCard({ card, deleteCard, onEdit }: Props) {
       style={style}
       {...attributes}
       {...listeners}
-      className="group bg-[#1F1D29] p-2.5 w-full min-h-[120px] flex flex-col justify-center space-y-1 rounded-xl shadow-sm hover:shadow-[0_0_12px_rgba(0,0,0,0.3)] transition-shadow duration-200 relative cursor-pointer"
+      className="group bg-white border border-slate-200 p-2.5 w-full min-h-[120px] flex flex-col justify-center space-y-1 rounded-xl shadow-sm hover:border-violet-200 hover:shadow-md transition-all duration-200 relative cursor-pointer dark:bg-[#1F1D29] dark:border-transparent dark:hover:shadow-[0_0_12px_rgba(0,0,0,0.3)]"
     >
       <CardOptionsIcon card={card} onEdit={onEdit} deleteCard={deleteCard} />
 
-      <p className="text-md text-gray-500 ml-1">{card.semester}</p>
-      <p className="text-lg font-bold text-white ml-1">{card.content}</p>
-      <p className="text-md text-gray-500 ml-1">{card.subjectName}</p>
+      <p className="text-md text-slate-500 ml-1 dark:text-gray-500">{card.semester}</p>
+      <p className="text-lg font-bold text-slate-900 ml-1 dark:text-white">{card.content}</p>
+      <p className="text-md text-slate-500 ml-1 dark:text-gray-500">{card.subjectName}</p>
     </div>
   );
 }

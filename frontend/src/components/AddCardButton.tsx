@@ -10,7 +10,7 @@ interface Props {
 function AddCardButton({ onClick, children, showLabel = true, className = "" }: Props) {
   return (
     <button
-      className={`p-2 rounded-lg hover:bg-gray-600 flex items-center gap-2 ${className}`}
+      className={`p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-gray-600 flex items-center gap-2 ${className}`}
       onClick={onClick}
     >
       <PlusIcon />

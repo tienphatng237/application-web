@@ -17,7 +17,7 @@ function AddBoardButton({
 }: Props) {
   return (
     <button
-      className={`p-2 rounded hover:bg-white/20 transition flex items-center gap-2 ${className}`}
+      className={`p-2 rounded-lg hover:bg-white/20 transition flex items-center gap-2 ${className}`}
       onClick={onClick}
     >
       {showLabel && <span>{children}</span>}

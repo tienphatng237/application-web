@@ -34,6 +34,9 @@ function KanbanBoard() {
 
   const [projectTitle, setProjectTitle] = useState("CloudOps-Practice");
   const [isEditingProjectTitle, setIsEditingProjectTitle] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">(() =>
+    localStorage.getItem("theme") === "dark" ? "dark" : "light"
+  );
 
   useEffect(() => {
     Promise.all([fetchBoards(), fetchCards()]).then(([b, c]) => {
@@ -41,6 +44,12 @@ function KanbanBoard() {
       setCards(c);
     });
   }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    document.documentElement.style.colorScheme = theme;
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const handleAddBoard = () => {
     setEditingBoard(null); 
@@ -193,8 +202,8 @@ function KanbanBoard() {
   }
 
   return (
-    <div className="flex flex-col gap-8 w-full bg-[#1F1D29] min-h-screen">
-      <div className="flex items-center justify-between gap-2 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 bg-[#2B2B39] h-[110px] border-b border-[#2F2F3C] shadow-xl">
+    <div className="flex flex-col gap-8 w-full min-h-screen bg-slate-50 text-slate-900 dark:bg-[#1F1D29] dark:text-white">
+      <div className="flex items-center justify-between gap-2 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 h-[110px] bg-white border-b border-slate-200 shadow-sm dark:bg-[#2B2B39] dark:border-[#2F2F3C] dark:shadow-xl">
         {isEditingProjectTitle ? (
           <form
             onSubmit={(e) => {
@@ -206,30 +215,40 @@ function KanbanBoard() {
             <input
               value={projectTitle}
               onChange={(e) => setProjectTitle(e.target.value)}
-              className="bg-black border border-gray-600 rounded px-2 py-1 text-white text-2xl font-bold"
+              className="bg-white border border-slate-300 rounded-lg px-3 py-2 text-slate-900 text-2xl font-bold shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-300 dark:bg-[#1F1D29] dark:border-gray-600 dark:text-white"
               autoFocus
             />
             <button
               type="submit"
-              className="text-sm bg-blue-600 px-2 py-1 rounded text-white"
+              className="text-sm bg-violet-600 px-3 py-2 rounded-lg text-white hover:bg-violet-700"
             >
               Save
             </button>
           </form>
         ) : (
           <>
-            <h1 className="text-3xl font-bold text-white">{projectTitle}</h1>
+            <h1 className="text-3xl font-bold text-slate-900 dark:text-white">{projectTitle}</h1>
           </>
         )}
 
-        <div className="rounded-xl p-2 font-bold bg-[#8038F0]">
-          <AddBoardButton
-            onClick={handleAddBoard}
-            showLabel={true}
-            className="text-md"
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => setTheme((current) => current === "light" ? "dark" : "light")}
+            className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-100 dark:border-gray-600 dark:bg-[#1F1D29] dark:text-slate-200 dark:hover:bg-[#3A374A]"
+            aria-label={theme === "light" ? "Chuyển sang chế độ tối" : "Chuyển sang chế độ sáng"}
           >
-            Add new board
-          </AddBoardButton>
+            {theme === "light" ? "☾ Chế độ tối" : "☀ Chế độ sáng"}
+          </button>
+          <div className="rounded-xl p-1.5 font-bold bg-violet-600 text-white shadow-sm">
+            <AddBoardButton
+              onClick={handleAddBoard}
+              showLabel={true}
+              className="text-md"
+            >
+              Add new board
+            </AddBoardButton>
+          </div>
         </div>
       </div>
 

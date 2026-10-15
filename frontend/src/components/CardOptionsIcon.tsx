@@ -21,15 +21,15 @@ function CardOptionsIcon({ card, onEdit, deleteCard }: Props) {
           setIsMenuOpen((prev) => !prev);
         }}
         onPointerDown={(e) => e.stopPropagation()}
-        className="text-white text-lg px-2 rounded hover:bg-gray-600"
+        className="px-2 text-lg text-slate-500 rounded-lg hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-gray-600 dark:hover:text-white"
       >
         <OptionIcon />
       </button>
 
       {isMenuOpen && (
-        <div className="absolute right-0 top-10 bg-[#1F1D29] text-white border border-gray-600 rounded-lg shadow-md z-20 w-32">
+        <div className="absolute right-0 top-10 z-20 w-32 rounded-lg border border-slate-200 bg-white text-slate-700 shadow-lg dark:border-gray-600 dark:bg-[#1F1D29] dark:text-white">
           <div className="flex flex-col gap-y-1">
-          <div className="px-4 py-2 text-xs text-gray-300 mt-2 mb-2">
+          <div className="mt-2 mb-2 px-4 py-2 text-xs text-slate-500 dark:text-slate-300">
             Card options
           </div>
           <button
@@ -39,7 +39,7 @@ function CardOptionsIcon({ card, onEdit, deleteCard }: Props) {
               onEdit(card);
             }}
             onPointerDown={(e) => e.stopPropagation()}
-            className="flex items-center gap-2 px-4 py-2 hover:bg-gray-700 w-full text-left"
+            className="flex w-full items-center gap-2 px-4 py-2 text-left hover:bg-slate-100 dark:hover:bg-gray-700"
           >
             <EditIcon /> Edit
           </button>

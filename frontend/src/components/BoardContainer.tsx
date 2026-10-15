@@ -34,7 +34,7 @@ function BoardContainer({
   fetchCards,
   maxCards,
 }: Props) {
-  const selectedColor = board.color || "#1F1D29";
+  const selectedColor = board.color || "#CBD5E1";
   const [editMode, setEditMode] = useState(false);
   const [showCardForm, setShowCardForm] = useState(false);
   const [editingCard, setEditingCard] = useState<Card | null>(null);
@@ -74,7 +74,7 @@ function BoardContainer({
     <div
       ref={setNodeRef}
       style={style}
-      className="bg-[#2B2B39] w-[350px] border-b border-[#2F2F3C] flex flex-col rounded-xl shadow-xl"
+      className="bg-slate-100 w-[350px] border border-slate-200 flex flex-col rounded-xl shadow-sm dark:bg-[#2B2B39] dark:border-[#2F2F3C] dark:shadow-xl"
     >
       {/* Header */}
       <div
@@ -88,16 +88,16 @@ function BoardContainer({
             {...attributes}
             {...listeners}
           >
-            <div className="flex justify-center items-center bg-gray-700 px-2 py-1 text-sm rounded-full text-white">
+            <div className="flex justify-center items-center bg-white/80 px-2 py-1 text-sm rounded-full text-slate-700 shadow-sm dark:bg-slate-900/50 dark:text-white">
               {cardsCount}
             </div>
 
             {!editMode && (
-              <span className="text-lg text-white truncate">{board.title}</span>
+              <span className="text-lg text-slate-900 truncate dark:text-white">{board.title}</span>
             )}
             {editMode && (
               <input
-                className="bg-black focus:border-rose-500 border rounded outline-none px-2 text-white w-full"
+                className="bg-white focus:border-violet-500 border border-slate-300 rounded outline-none px-2 py-1 text-slate-900 w-full dark:bg-[#1F1D29] dark:border-gray-600 dark:text-white"
                 value={board.title}
                 onChange={(e) =>
                   updateBoard(board.id, {
@@ -154,7 +154,7 @@ function BoardContainer({
       <AddCardButton
         onClick={() => setShowCardForm(true)}
         showLabel
-        className="text-md text-gray-500 hover:text-white rounded-md px-6 py-4"
+        className="text-md text-slate-500 hover:text-slate-900 hover:bg-white rounded-md px-6 py-4 dark:text-gray-500 dark:hover:text-white dark:hover:bg-gray-600"
       >
         Add card
       </AddCardButton>

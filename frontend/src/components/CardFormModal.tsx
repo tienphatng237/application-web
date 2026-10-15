@@ -56,22 +56,22 @@ function CardFormModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-white/30 flex justify-center items-center z-50">
-      <div className="bg-[#2B2B39] p-6 rounded-xl shadow-lg w-[90%] max-w-md space-y-4">
+    <div className="fixed inset-0 bg-slate-900/30 backdrop-blur-sm flex justify-center items-center z-50">
+      <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-xl w-[90%] max-w-md space-y-4 dark:bg-[#2B2B39] dark:border-[#2F2F3C]">
         <div>
-          <h2 className="text-xl font-semibold text-left text-white mb-4">
+          <h2 className="text-xl font-semibold text-left text-slate-900 mb-4 dark:text-white">
             {isEditMode ? "Edit Card" : "Add New Card"}
           </h2>
-          <hr className="mt-2 border-gray-500" />
+          <hr className="mt-2 border-slate-200 dark:border-gray-500" />
         </div>
 
         <div className="space-y-4">
           <div>
-            <label className="text-sm text-gray-300">Content *</label>
+            <label className="text-sm font-medium text-slate-700 dark:text-gray-300">Content *</label>
             <input
               type="text"
               placeholder="Content"
-              className="w-full p-2 border rounded bg-[#1F1D29] text-white mt-2"
+              className="w-full p-2 border border-slate-300 rounded-lg bg-white text-slate-900 mt-2 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-200 focus:border-violet-400 dark:bg-[#1F1D29] dark:border-gray-600 dark:text-white"
               value={formData.content}
               onChange={(e) =>
                 setFormData({ ...formData, content: e.target.value })
@@ -81,11 +81,11 @@ function CardFormModal({
           </div>
 
           <div>
-            <label className="text-sm text-gray-300">Name of subject</label>
+            <label className="text-sm font-medium text-slate-700 dark:text-gray-300">Name of subject</label>
             <input
               type="text"
               placeholder="Name of subject"
-              className="w-full p-2 border rounded bg-[#1F1D29] text-white mt-2"
+              className="w-full p-2 border border-slate-300 rounded-lg bg-white text-slate-900 mt-2 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-200 focus:border-violet-400 dark:bg-[#1F1D29] dark:border-gray-600 dark:text-white"
               value={formData.subjectName}
               onChange={(e) =>
                 setFormData({ ...formData, subjectName: e.target.value })
@@ -94,11 +94,11 @@ function CardFormModal({
           </div>
 
           <div>
-            <label className="text-sm text-gray-300">Semester</label>
+            <label className="text-sm font-medium text-slate-700 dark:text-gray-300">Semester</label>
             <input
               type="text"
               placeholder="Semester"
-              className="w-full p-2 border rounded bg-[#1F1D29] text-white mt-2"
+              className="w-full p-2 border border-slate-300 rounded-lg bg-white text-slate-900 mt-2 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-200 focus:border-violet-400 dark:bg-[#1F1D29] dark:border-gray-600 dark:text-white"
               value={formData.semester}
               onChange={(e) =>
                 setFormData({ ...formData, semester: e.target.value })
@@ -109,7 +109,7 @@ function CardFormModal({
 
         <div className="flex justify-end gap-2 mt-10">
           <button
-            className="px-4 py-2 border border-gray-500 bg-[#3A374A] rounded hover:bg-gray-400 text-white"
+            className="px-4 py-2 border border-slate-300 bg-white rounded-lg hover:bg-slate-100 text-slate-700 dark:bg-[#3A374A] dark:border-gray-500 dark:text-white dark:hover:bg-gray-600"
             onClick={() => {
               setFormData({ content: "", subjectName: "", semester: "" });
               onClose();
@@ -118,7 +118,7 @@ function CardFormModal({
             Cancel
           </button>
           <button
-            className="px-4 py-2 border border-gray-500 bg-[#238636] text-white rounded hover:bg-[#55B37A]"
+            className="px-4 py-2 border border-violet-600 bg-violet-600 text-white rounded-lg hover:bg-violet-700"
             onClick={handleSubmit}
           >
             Save
